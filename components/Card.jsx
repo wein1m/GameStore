@@ -4,8 +4,8 @@ import { getTrending } from "./../lib/actions";
 const Card = async ({ title, banner_portrait, price }) => {
   const trending = await getTrending();
   return (
-    <div className="flex flex-col gap-5 w-[240px]">
-      <div className=" mx-auto">
+    <div className="flex flex-col gap-5 min-w-[200px] w-[240px] mb-5 snap-start">
+      <div className="mx-auto">
         <Image
           src={banner_portrait}
           height={235}

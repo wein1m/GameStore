@@ -5,29 +5,29 @@ import CTAButton from "@/components/btn";
 const TrendingCarousel = async () => {
   const trending = await getTrending();
   return (
-    <section>
+    <section className="mb-[-250px] md:mb-0">
       <h1 className="section-title">Trending</h1>
 
       <div className="flex flex-row justify-center gap-5">
-        <div className="relative h-[513px] w-full rounded-3xl overflow-hidden">
+        <div className=" h-[714px] w-full md:relative md:h-[513px] md:w-full rounded-3xl overflow-hidden">
           <Image
-            src={trending[0].banner}
+            src={trending[1].banner}
             fill
-            alt={`${trending[0].title} background`}
+            alt={`${trending[1].title} background`}
             className="object-cover"
           />
 
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
 
-          <div className="absolute bottom-10 left-10 z-10 text-white w-[350px]">
+          <div className="absolute bottom-10 left-10 z-10 text-white w-[300px] mb-15 md:mb-0 md:w-[350px] ">
             <div className="flex flex-col gap-5">
               <Image
-                src={trending[0].logo}
-                alt={`${trending[0].title} logo`}
+                src={trending[1].logo}
+                alt={`${trending[1].title} logo`}
                 width={300}
                 height={80}
               />
-              <p className="leading-[27px]">{trending[0].short_desc}</p>
+              <p className="leading-[27px]">{trending[1].short_desc}</p>
             </div>
 
           </div>
@@ -35,13 +35,9 @@ const TrendingCarousel = async () => {
               Play Now!
               {/* <span>IDR {trending[0].price.toLocaleString("en-us")}</span> */}
             </a>
-            {/* <CTAButton className=""/> */}
-          {/* <p className="absolute top-5 left-5 z-10 text-white text-xl font-bold">
-            hehehe
-          </p> */}
         </div>
 
-        <div className="flex flex-col justify-between">
+        <div className="hidden md:flex md:flex-col md:justify-between">
           {trending.map((i) => (
             <div
               key={i.$id}

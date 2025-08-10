@@ -4,7 +4,7 @@
   :root {
     --background: #101014;
     --foreground: #fff;
-    @apply px-[200px];
+    @apply px-8 lg:px-[200px];
   }
 
   @theme inline {
