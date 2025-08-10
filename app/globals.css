@@ -4,7 +4,7 @@
   :root {
     --background: #101014;
     --foreground: #fff;
-    @apply px-[200px] py-[80px]
+    @apply px-[200px];
   }
 
   @theme inline {
@@ -16,10 +16,25 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-figtree)
+    font-family: var(--font-figtree);
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 }
 
 @layer utilities {
+  section {
+    @apply my-20;
+  }
 
+  .section-title {
+    @apply font-bold text-[40px] py-2;
+  }
 }
