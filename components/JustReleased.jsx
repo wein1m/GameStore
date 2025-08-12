@@ -1,5 +1,6 @@
 import Card from './Card'
 import { getTrending } from './../lib/actions';
+import Image from 'next/image';
 
 const JustReleased = async () => {
   const trending = await getTrending()
@@ -7,7 +8,7 @@ const JustReleased = async () => {
     <section>
       <h1 className="section-title">Just Released</h1>
       {/* combining the scroll start on childrens and scroll-padding on parent */}
-      <div className="flex flex-row justify-between gap-5 overflow-x-auto snap-x snap-mandatory scroll-p-0">
+      <div className="horizontal-scroll !pb-0">
 
       {/* spread all items cuz it changed to 2d object when mapped :/ */}
       {trending.map((item) => (

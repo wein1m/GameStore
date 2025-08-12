@@ -1,56 +1,115 @@
-import { getTrending } from "@/lib/actions";
-import Image from "next/image";
-import CTAButton from "@/components/btn";
+"use client";
 
-const TrendingCarousel = async () => {
-  const trending = await getTrending();
+import { getTrending } from "@/lib/actions";
+import gsap from "gsap";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+
+const TrendingCarousel = ({ trending }) => {
+  const imageRef = useRef(null);
+  const contentRef = useRef(null);
+
+  const [index, setIndex] = useState(0);
+
+  // Handle Content Changing
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % trending.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Animate on Index Change
+  useEffect(() => {
+    if (contentRef.current) {
+      gsap.fromTo(
+        contentRef.current,
+        { x: 10, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.3 }
+      );
+    }
+    if (imageRef.current) {
+      gsap.fromTo(
+        imageRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power2.inOut" }
+      );
+    }
+  }, [index]);
+
   return (
     <section className="mb-[-250px] md:mb-0">
       <h1 className="section-title">Trending</h1>
 
       <div className="flex flex-row justify-center gap-5">
-        <div className=" h-[714px] w-full md:relative md:h-[513px] md:w-full rounded-3xl overflow-hidden">
-          <Image
-            src={trending[1].banner}
-            fill
-            alt={`${trending[1].title} background`}
-            className="object-cover"
-          />
+        {/* Main Carousel */}
+        <Link
+          href={`details/${trending[index].$id}`}
+          className="h-[714px] w-full md:relative md:h-[513px] md:w-full rounded-3xl overflow-hidden"
+        >
+          <div ref={imageRef}>
+            <Image
+              src={trending[index].banner}
+              fill
+              sizes="714px"
+              alt={`${trending[index].title} background`}
+              className="object-cover"
+            />
+          </div>
 
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
 
-          <div className="absolute bottom-10 left-10 z-10 text-white w-[300px] mb-15 md:mb-0 md:w-[350px] ">
-            <div className="flex flex-col gap-5">
-              <Image
-                src={trending[1].logo}
-                alt={`${trending[1].title} logo`}
-                width={300}
-                height={80}
-              />
-              <p className="leading-[27px]">{trending[1].short_desc}</p>
+          <div
+            ref={contentRef}
+            className="absolute bottom-10 left-10 z-30 w-[calc(100%-5rem)]"
+          >
+            <div className="flex justify-between">
+              {/* Left content */}
+              <div className="flex flex-col gap-5 text-white w-[300px] mb-15 md:mb-0 md:w-[350px]">
+                <Image
+                  src={trending[index].logo}
+                  alt={`${trending[index].title} logo`}
+                  width={300}
+                  height={80}
+                  className="relative w-auto h-auto"
+                />
+                <p className="leading-[27px]">{trending[index].short_desc}</p>
+              </div>
+
+              {/* Right content */}
+              <div className="flex flex-col justify-end">
+                <p className="text-black font-bold rounded-xl bg-white px-[30px] py-[10px]">
+                  Play for {trending[index].price.toLocaleString("en-us")}
+                </p>
+              </div>
             </div>
-
           </div>
-            <a className="absolute bottom-10 right-10 z-10 text-black font-bold rounded-xl  bg-white px-[30px] py-[10px]">
-              Play Now!
-              {/* <span>IDR {trending[0].price.toLocaleString("en-us")}</span> */}
-            </a>
-        </div>
+        </Link>
 
+        {/* Thumb Column */}
         <div className="hidden md:flex md:flex-col md:justify-between">
-          {trending.map((i) => (
+          {trending.map((item, i) => (
             <div
-              key={i.$id}
-              className="flex gap-5 rounded-xl p-2 "
+              key={item.$id}
+              className={`flex gap-5 rounded-xl p-2 ${
+                i === index ? "bg-[#ffffff20]" : "bg-none"
+              }`}
             >
               <Image
-                src={i.banner_portrait}
+                src={item.banner_portrait}
                 width={55}
                 height={150}
-                alt={i.title}
+                alt={item.title}
                 className="rounded-md"
               />
-              <p className="text-sm font-semibold my-auto">{i.title}</p>
+              <p
+                className={`text-sm my-auto ${
+                  i === index ? "font-bold" : "font-normal"
+                }`}
+              >
+                {item.title}
+              </p>
             </div>
           ))}
         </div>

@@ -1,11 +1,13 @@
 import Image from "next/image";
-import { getTrending } from "./../lib/actions";
+import Link from "next/link";
 
-const Card = async ({ title, banner_portrait, price }) => {
-  const trending = await getTrending();
+const Card = async ({ title, banner_portrait, price, $id }) => {
   return (
-    <div className="flex flex-col gap-5 min-w-[200px] w-[240px] mb-5 snap-start">
-      <div className="mx-auto">
+    <Link
+      href={`/details/${$id}`}
+      className="flex flex-col gap-5 min-w-[200px] w-[240px] mb-5 snap-start"
+    >
+      <div className="mx-auto relative">
         <Image
           src={banner_portrait}
           height={235}
@@ -16,9 +18,9 @@ const Card = async ({ title, banner_portrait, price }) => {
       </div>
       <div className="flex flex-col gap-2">
         <h1 className="font-bold text-lg leading-6">{title}</h1>
-        <p className="text-sm">IDR {price.toLocaleString('en-us')}</p>
+        <p className="text-sm">IDR {price.toLocaleString("en-us")}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -1,0 +1,25 @@
+  {
+    title: 'ELDEN RING',
+    desc: 'THE CRITICALLY ACCLAIMED FANTASY ACTION RPG\n' +
+      'Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring.\n' +
+      '\n' +
+      '\n' +
+      '• A Breathtaking World Full of Excitement and Mystery\n' +
+      'The Lands Between are part of a vast continent where magnificent open fields and huge dungeons with complex and three-dimensional designs are seamlessly connected. As you explore, the joy of discovering unknown and overwhelming threats awaits you.\n' +
+      'Mastery of the terrain and knowledge of its secrets can help you overcome enemies and defeat formidable bosses or lead invading players into traps.\n' +
+      '\n' +
+      '• Defeat Challenging Foes in Intense Combat\n' +
+      'Combat in ELDEN RING is simple to learn yet offers hidden depths of mastery. As you seek to become the Elden Lord, you’ll need to explore the balance between attacking and avoiding damage, use a wide variety of weapons, spells, & summons, and perfect your timing to take advantage of your opponents’ weaknesses.',
+    short_desc: 'THE CRITICALLY ACCLAIMED FANTASY ACTION RPG. Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.\n',
+    price: 599000,
+    logo: 'https://github.com/yota-sz/gamestore-img/blob/main/elden_ring/eldenRing-logo.png?raw=true',
+    banner: 'https://github.com/yota-sz/gamestore-img/blob/main/elden_ring/eldenRing-banner.png?raw=true',
+    banner_portrait: 'https://github.com/yota-sz/gamestore-img/blob/main/elden_ring/eldenRing-banner_portrait.png?raw=true',
+    '$id': '689788fe002a532bcf14',
+    '$sequence': 5,
+    '$createdAt': '2025-08-09T17:44:31.779+00:00',
+    '$updatedAt': '2025-08-09T17:54:12.830+00:00',
+    '$permissions': [],
+    '$databaseId': '68977edf0025a0dab5a5',
+    '$collectionId': '68977ee8000ad4c4c5c2'
+  },

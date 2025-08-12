@@ -37,4 +37,30 @@
   .section-title {
     @apply font-bold text-[40px] py-2;
   }
+
+  /* ============ Horizontal Scroll ============*/
+  .horizontal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #2d2d32 transparent;
+    @apply flex flex-row justify-between gap-5 overflow-x-auto snap-x snap-mandatory scroll-p-0 pb-[4px];
+  }
+
+  .horizontal-scroll::-webkit-scrollbar {
+    height: 5px; /* scrollbar thickness */
+  }
+
+  .horizontal-scroll::-webkit-scrollbar-track {
+    background: transparent; /* track background */
+  }
+
+  .horizontal-scroll::-webkit-scrollbar-thumb {
+    background-color: #2d2d32; /* thumb color */
+    border-radius: 9999px; /* full rounded */
+    min-width: 10px; /* thumb min width */
+  }
+
+  .horizontal-scroll::-webkit-scrollbar-button {
+    /* Remove the scroll buttons in WebKit browsers */
+    display: none;
+  }
 }
